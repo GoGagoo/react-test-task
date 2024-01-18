@@ -8,8 +8,8 @@
 ## Справочник по цвету
 | Цвет             | Код цвета                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Основной цвет | ![#F9C815](https://via.placeholder.com/10/F9C815?text=+) #F9C815 |
-| Вторичный цвет | ![#00b48a](https://via.placeholder.com/10/EA5D0C?text=+) #EA5D0C |
+| Основной цвет | ![#374151](https://via.placeholder.com/10/374151?text=+) #374151 |
+| Вторичный цвет | ![#CBD5E1](https://via.placeholder.com/10/CBD5E1?text=+) #CBD5E1 |
 | Цвет заднего фона | ![#8360C3](https://via.placeholder.com/10/8360C3?text=+) #8360C3 & ![#2196F3](https://via.placeholder.com/10/2196f3?text=+) #2196F3 |
 
 
