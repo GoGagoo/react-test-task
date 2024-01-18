@@ -40,7 +40,7 @@
 Склонируйте проект
 
 ```bash
-  git clone https://github.com/GoGagoo/react-test-task
+  git clone https://github.com/GoGagoo/react-test-task.git
 ```
 
 Перейдите в директорию склонированного проекта
