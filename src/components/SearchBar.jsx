@@ -1,27 +1,46 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+
+const debounce = (func, delay) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => func.apply(this, args), delay)
+  }
+}
 
 const SearchBar = ({ setResults }) => {
-	const [input, setInput] = useState("")
+	const [input, setInput] = useState('')
+	const cache = new Map()
 
 	const fetchPeople = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => {
-        const results = json.filter((user) => {
-          return (
-            value &&
-            user &&
-            user.name &&
-            user.name.toLowerCase().includes(value)
-          )
-        })
-        setResults(results)
-      })
-  }
+		if (cache.has(value)) {
+			setResults(cache.get(value))
+		} else {
+			fetch(`https://swapi.dev/api/people/?search=${value}`)
+				.then((response) => response.json())
+				.then((json) => {
+					const result = json.results.filter((user) => {
+						return (
+							value &&
+							user &&
+							user.name &&
+							user.name.toLowerCase().includes(value)
+						)
+					})
+					setResults(result)
+					cache.set(value, result)
+				})
+				.catch((error) => {
+					console.error('Ошибка при выполнении запроса:', error)
+				})
+		}
+	}
+
+	const debouncedFetch = useCallback(debounce(fetchPeople, 500), [])
 
 	const handleChange = (value) => {
 		setInput(value)
-		fetchPeople(value)
+		debouncedFetch(value)
 	}
 
 	return (
