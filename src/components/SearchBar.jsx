@@ -76,13 +76,13 @@ const SearchBar = ({ setResults }) => {
 				<input
 					type='search'
 					id='search'
-					className='block focus:outline-none w-full p-4 ps-10 text-xl text-gray-900 border border-gray-300 rounded-t-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-inner'
+					className='block focus:outline-none w-full p-4 ps-10 text-xl text-gray-900 border border-gray-300 rounded-t-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-inner rounded-b-md'
 					placeholder='Search by name'
 					value={input}
 					onChange={(e) => handleChange(e.target.value)}
 					required
 				/>
-				{isLoading && <Loader />}
+				{isLoading && input !== '' && <Loader />}
 			</div>
 		</div>
 	)

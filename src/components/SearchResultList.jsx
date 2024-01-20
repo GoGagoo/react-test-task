@@ -24,7 +24,7 @@ const SearchResultList = ({ results }) => {
 	}, [results.length])
 
 	return (
-		<div className='w-100% bg-gray-700 mx-0 flex flex-col shadow-sm rounded-b-md max-h'>
+		<div className='w-100% bg-gray-700 mx-0 mt-0.5 flex flex-col shadow-sm rounded-md max-h'>
 			{results.length > 0 || results === '' ? (
 				results.map((result, id) => <SearchResult key={id} result={result} isActive={id === activeIndex} />)
 			) : isNotFound ? (
