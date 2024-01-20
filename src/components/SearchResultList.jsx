@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import NotFound from './NotFound'
 import SearchResult from './SearchResult'
@@ -7,12 +7,23 @@ const SearchResultList = ({ results }) => {
 	const [isNotFound, setIsNotFound] = useState(true)
 	const [activeIndex, setActiveIndex] = useState(0)
 
+	const handleEnter = (event) => {
+		if (event.key === 'Enter' && activeIndex >= 0 && results[activeIndex]) {
+			document.getElementById('search').value = results[activeIndex].name;
+			event.preventDefault()
+		}
+	}
+
+	
+
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if (event.key === 'ArrowDown') {
-				setActiveIndex((prevIndex) => Math.min(prevIndex + 1, results.length - 1))
+				setActiveIndex((prevIndex) => Math.min(prevIndex + 1, results.length - 1));
 			} else if (event.key === 'ArrowUp') {
-				setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0))
+				setActiveIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+			} else if (event.key === 'Enter') {
+				handleEnter(event);
 			}
 		}
 

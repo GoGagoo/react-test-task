@@ -5,11 +5,10 @@ import SearchBar from './components/SearchBar'
 import SearchResultList from './components/SearchResultList'
 
 function App() {
-  const [results, setResults] = useState([]);
-
+  const [results, setResults] = useState([])
 	return (
 		<form>
-      <SearchBar setResults={setResults} />
+      <SearchBar setResults={setResults}  />
       <SearchResultList results={results} />
 		</form>
 	)
