@@ -1,18 +1,21 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
+import Loader from './Loader'
 
 const debounce = (func, delay) => {
-  let timeout;
-  return (...args) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func.apply(this, args), delay)
-  }
+	let timeout
+	return (...args) => {
+		clearTimeout(timeout)
+		timeout = setTimeout(() => func.apply(this, args), delay)
+	}
 }
 
 const SearchBar = ({ setResults }) => {
 	const [input, setInput] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 	const cache = new Map()
 
 	const fetchPeople = (value) => {
+		setIsLoading(true)
 		if (cache.has(value)) {
 			setResults(cache.get(value))
 		} else {
@@ -29,9 +32,11 @@ const SearchBar = ({ setResults }) => {
 					})
 					setResults(result)
 					cache.set(value, result)
+					setIsLoading(false)
 				})
 				.catch((error) => {
 					console.error('Ошибка при выполнении запроса:', error)
+					setIsLoading(false)
 				})
 		}
 	}
@@ -53,7 +58,7 @@ const SearchBar = ({ setResults }) => {
 			<div className='relative'>
 				<div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
 					<svg
-						className='w-4 h-4 text-blue-400'
+						className='block t-0 l-0 w-4 h-4 text-blue-400'
 						aria-hidden='true'
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
@@ -72,11 +77,12 @@ const SearchBar = ({ setResults }) => {
 					type='search'
 					id='search'
 					className='block focus:outline-none w-full p-4 ps-10 text-xl text-gray-900 border border-gray-300 rounded-t-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-inner'
-					placeholder='Поиск по имени'
+					placeholder='Search by name'
 					value={input}
 					onChange={(e) => handleChange(e.target.value)}
 					required
 				/>
+				{isLoading && <Loader />}
 			</div>
 		</div>
 	)
