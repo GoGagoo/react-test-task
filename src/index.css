@@ -17,4 +17,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background: linear-gradient(to right, #8360c3, #2196f3);
+}
 
+
+.resultProductContainer::-webkit-scrollbar {
+  width: 6px;
+  height: 20px;
+  border-radius: 10px;
+  background: #e0cbcb;
+}
+.resultProductContainer::-webkit-scrollbar-thumb {
+  background: #2c6899;
+  border-radius: 10px;
+}
+
+.resultProductContainer::-webkit-scrollbar-thumb:hover {
+  background: #375c82;
+  border-radius: 10px;
+}

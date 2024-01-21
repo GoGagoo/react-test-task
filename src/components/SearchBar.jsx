@@ -58,7 +58,7 @@ const SearchBar = ({ setResults }) => {
 			<div className='relative'>
 				<div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
 					<svg
-						className='block t-0 l-0 w-4 h-4 text-blue-400'
+						className='block t-0 l-0 w-4 h-4 text-blue-40'
 						aria-hidden='true'
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'

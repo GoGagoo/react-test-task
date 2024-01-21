@@ -39,26 +39,28 @@ const SearchResultList = ({ results }) => {
 	}, [])
 
 	return (
-		<div
-			onKeyDown={handleKeyDown}
-			tabIndex='0'
-			ref={listRef}
-			className='w-100% bg-gray-700 mx-0 mt-0.5 flex flex-col shadow-sm rounded-md max-h'
-		>
-			{results.length > 0 || results === '' ? (
-				results.map((result, id) => (
-					<SearchResult
-						key={id}
-						result={result}
-						id={id}
-						isActive={id === activeIndex}
-						setActiveIndex={setActiveIndex}
-					/>
-				))
-			) : isNotFound ? (
-				<NotFound />
-			) : null}
-		</div>
+		<div>
+      {results.length > 0 ? (
+        <div
+          onKeyDown={handleKeyDown}
+          tabIndex='0'
+          ref={listRef}
+          className='w-100% bg-gray-700 mx-0 mt-0.5 outline-none flex flex-col shadow-sm rounded-md max-h-96 overflow-y-scroll resultProductContainer'
+        >
+          {results.map((result, id) => (
+            <SearchResult
+              key={id}
+              result={result}
+              id={id}
+              isActive={id === activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
+          ))}
+        </div>
+      ) : isNotFound ? (
+        <NotFound />
+      ) : null}
+    </div>
 	)
 }
 
