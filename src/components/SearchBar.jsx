@@ -49,7 +49,7 @@ const SearchBar = ({ setResults }) => {
 	}
 
 	return (
-		<div>
+		<div className='font-poppins'>
 			<h1 className='m-10 text-4xl'>🔎Search Input Field By Gagik Antonyan</h1>
 			<label
 				htmlFor='search'

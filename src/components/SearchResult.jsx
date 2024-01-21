@@ -9,7 +9,7 @@ const SearchResult = ({ result, isActive, setActiveIndex, id }) => {
 				document.getElementById('search').value = result.name
 				setActiveIndex(id)
 			}}
-			className={`text-2xl pl-4 py-4 hover:px-4 text-left text-white hover:text-black hover:bg-slate-300  hover:rounded-xl cursor-pointer ${activeClass}`}
+			className={`font-poppins text-2xl pl-4 py-4 hover:px-4 text-left text-white hover:text-black hover:bg-slate-300  hover:rounded-xl cursor-pointer ${activeClass}`}
 		>
 			{result.name}
 		</div>

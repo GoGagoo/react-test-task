@@ -39,7 +39,7 @@ const SearchResultList = ({ results }) => {
 	}, [])
 
 	return (
-		<div>
+		<div className='font-poppins'>
       {results.length > 0 ? (
         <div
           onKeyDown={handleKeyDown}
