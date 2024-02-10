@@ -1,4 +1,4 @@
-# React Test Task
+# React Test Task: Search Input Field
 
 ![Cover](https://i.postimg.cc/PqC6Js2y/475shots-so.jpg)
 
